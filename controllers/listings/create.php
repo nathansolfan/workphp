@@ -1,3 +1,4 @@
 <?php      
 
-echo 'Hello create';
+// same as listings/index 
+loadView('listings/create');
