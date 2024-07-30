@@ -8,8 +8,8 @@ require '../helpers.php';
 // create array
 $routes = [
     '/' => 'controllers/home.php',
-    '/listing' => 'controllers/listings/index.php',
-    '/listing/create' => 'controllers/listing/create.php',
+    '/listings' => 'controllers/listings/index.php',
+    '/listings/create' => 'controllers/listings/create.php',
     '404' => 'controllers/error/404.php',
 ];
 
