@@ -1,14 +1,7 @@
 <?php loadPartial('head');?>
 <?php loadPartial('navbar');?>
-
 <?php loadPartial('showcase');?>
-
-<?php loadPartial('topbanner');?>
-
-
-
-
-   
+<?php loadPartial('topbanner');?>   
 
     
     <!-- Job Listings -->

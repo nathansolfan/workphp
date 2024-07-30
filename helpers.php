@@ -22,7 +22,7 @@
    $viewPath = basePath("views/{$name}.view.php");
 
    // the inspect() from bottom which gives the var_dump() value
-   inspect($viewPath);
+   // inspect($viewPath);
 
    if(file_exists($viewPath)){
       require $viewPath;
