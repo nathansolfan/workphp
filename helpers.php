@@ -21,12 +21,16 @@
   function loadView($name){
    $viewPath = basePath("views/{$name}.view.php");
 
+   // the inspect() from bottom which gives the var_dump() value
+   inspect($viewPath);
+
    if(file_exists($viewPath)){
       require $viewPath;
    } else {
       echo "View '{$name}' not found";
    }
   }
+
 
   /**
   * Load Partials
@@ -44,3 +48,30 @@
       echo "View '{$name}' not found";
    }
   }
+
+  /**
+   * Inspect value(s)
+   * 
+   * @param mixed $value
+   * @return void - empty
+   */
+
+   function inspect($value){
+      echo '<pre>';
+      var_dump($value);
+      echo '<pre>';
+   }
+
+   /**
+   * Inspect value(s) and DIE
+   * 
+   * @param mixed $value
+   * @return void - empty
+   */
+
+   function inspectAndDie($value){
+      echo '<pre>';
+      die(var_dump($value));
+      echo '<pre>';
+   }
+
