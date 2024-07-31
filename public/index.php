@@ -26,5 +26,3 @@ $router->route($uri, $method);
 
 
 
-$config = require '../config/db.php';
-$db = new Database($config);
