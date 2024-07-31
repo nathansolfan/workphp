@@ -19,15 +19,36 @@ class Database {
 
         // Options for PDO
         $options = [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION // Enable exceptions for errors
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // Enable exceptions for errors
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
         ];
 
         try {
             $this->conn = new PDO($dsn, $config['username'], $config['password'], $options);
             echo "Connection successful!";
         } catch (PDOException $e) {
-            error_log("Database connection failed: DSN={$dsn}, User={$config['username']} - Error: {$e->getMessage()}");
             throw new Exception("Database connection failed: {$e->getMessage()}");
         }
     }
+
+    /**
+     * Query the database
+     * 
+     * @param string $query
+     * 
+     * @return PDOStatement
+     * @throws PDOExcepetion 
+     */
+
+     public function query($query) {
+        try {
+            // $conn from property and then new PDO instance up on try/catch
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        } catch (PDOException $e) {
+            throw new Exception("Query failed to execute: {$e->getmessage()}");            
+        }
+     }
+
 }
