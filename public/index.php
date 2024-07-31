@@ -1,6 +1,13 @@
 <?php
 require '../helpers.php';
 
+
+// the 2 require using the basePath() func from the helpers
+require '../Database.php';
+$config = require '../config/db.php';
+
+$db = new Database($config);
+
 // require the function from helpers and pass the @param
 // loadView('home'); goes to home.php
 
@@ -9,14 +16,14 @@ require '../helpers.php';
 // inspectAndDie($uri);
 
 
-
-
 require basePath('router.php'); 
 
 
 $router = new Router();
 
-$routes = require basePath('routes.php');
+// $routes = require basePath('routes.php');
+$routes = require '../routes.php';
+
 
 // this is where it starts with SERVER request
 $uri = $_SERVER['REQUEST_URI'];
