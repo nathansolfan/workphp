@@ -18,13 +18,16 @@
   * @return void
   */
 
-  function loadView($name){
+  // $data equals an empty array 
+  function loadView($name, $data = [] ){
    $viewPath = basePath("views/{$name}.view.php");
 
    // the inspect() from bottom which gives the var_dump() value
    // inspect($viewPath);
 
    if(file_exists($viewPath)){
+      // extract transfrom controller/home associative array into a var
+      extract($data);
       require $viewPath;
    } else {
       echo "View '{$name}' not found";

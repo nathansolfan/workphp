@@ -3,6 +3,8 @@
 <?php loadPartial('showcase');?>
 <?php loadPartial('topbanner');?>   
 
+<?php inspect($users) ?>
+
     
     <!-- Job Listings -->
     <section>
