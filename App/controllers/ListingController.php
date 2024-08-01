@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 Use Framework\Database;
 
-class HomeController 
+class ListingController 
 {
     protected $db;    
 
@@ -16,7 +16,7 @@ class HomeController
 
     public function index()
     {
-        $listings = $this->db->query('SELECT * FROM listings LIMIT 6')->fetchAll();
+        $listings = $this->db->query('SELECT * FROM listings')->fetchAll();
         $users = $this->db->query('SELECT * FROM users LIMIT 6')->fetchAll();
         // inspect($users);
         loadView('home', [

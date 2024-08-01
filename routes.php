@@ -8,6 +8,7 @@
 
 // from the $router = new Router() at public/index.php
 $router->get('/', 'HomeController@index');
+$router->get('/listings', 'ListingController@index');
 
 // $router->get('/', 'controllers/home.php');
 // $router->get('/listings', 'controllers/listings/index.php');
