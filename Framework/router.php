@@ -2,7 +2,6 @@
 
 namespace Framework;
 
-
 // // need to import $routes and set it to the $routes variable
 // $routes = require basePath('routes.php');
 
@@ -15,28 +14,32 @@ namespace Framework;
 //     require(basePath($routes['404']));
 // }
 
+
+
 class Router {
     protected $routes = [];
-
-
 
     /**
      * Add a new Route
      * 
      * @param $method
      * @param [type] $uri
-     * @param [type] $controller
+     * @param [type] $action
      * @return void
      */
-    public function registerRoute($method, $uri, $controller){
+    public function registerRoute($method, $uri, $action){
+
+        list($controller, $controllerMethod) = explode('@', $action);
+        // inspectAndDie($controller);
         // $this access the empty array routes
         $this->routes[] = [
             'method' => $method,
             'uri' => $uri,
+            // not passing $controller
             'controller' => $controller,
+            'controllerMethod' => $controllerMethod,
         ];
     }
-
 
     /**
      * Add a GET route
@@ -112,7 +115,16 @@ class Router {
     public function route($uri, $method){
         foreach ($this->routes as $route) {
             if ($route['uri'] === $uri && $route['method'] === $method) {
-                require basePath('App/' . $route['controller']);
+                // require basePath('App/' . $route['controller']);
+                // Extract Controller and ControllerMethod from routes from RegisterROute
+                $controller = 'App\\Controllers\\' . $route['controller'];
+                $controllerMethod = $route['controllerMethod'];
+
+                // Instantiate controller, call the method
+                $controllerInstance = new $controller();
+                $controllerInstance->$controllerMethod();
+
+
                 return;            
             }            
         }
