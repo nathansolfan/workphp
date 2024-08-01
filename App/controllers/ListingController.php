@@ -30,4 +30,20 @@ class ListingController
     {
         loadView('listings/create');
     }
+
+    public function show()
+    {
+        $id = $_GET['id'] ?? '';
+        $params = [
+            'id' => $id 
+        ];
+        // Query, its modified on Database.php to take $params.
+        $listing = $this->db->query('SELECT * FROM listings WHERE id = :id', $params)->fetch();
+        // inspect($listing);
+
+        // loadView has been changed to accept array []
+        loadView('listings/show', [
+            'listing' => $listing
+        ]);
+    }
 }
