@@ -1,0 +1,16 @@
+{
+    "name":"nathansolfan/workphp",
+    "description":"Job listing App",
+    "authors": [
+        {
+            "name":"Nathan Ferreira",
+            "email":"nathansolfan@hotmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Framework\\": "Framework/",
+            "App\\": "App/"
+        }
+    }
+}

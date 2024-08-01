@@ -1,7 +1,8 @@
 <?php
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+namespace Framework;
+use PDO;
+use PDOException;
 
 class Database {
     public $conn;

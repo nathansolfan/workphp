@@ -2,6 +2,9 @@
 
 // get the database - inspect($id)
 // id = ' . $id) change to placeholder :id, $params
+use Framework\Database;
+
+
 $config = require '../config/db.php';
 $db = new Database($config);
 

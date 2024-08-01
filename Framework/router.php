@@ -1,5 +1,8 @@
 <?php
 
+namespace Framework;
+
+
 // // need to import $routes and set it to the $routes variable
 // $routes = require basePath('routes.php');
 
