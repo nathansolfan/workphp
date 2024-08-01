@@ -18,7 +18,9 @@ $router = new Router();
 $routes = require '../routes.php';
 
 // this is where it starts with SERVER request - Get Current URI and HTTP
-$uri = $_SERVER['REQUEST_URI'];
+// for the http://localhost:8000/listings/2 - pass parse_url
+// like this dont include the ID on the main URI, inspect($uri) shows that 
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $method = $_SERVER['REQUEST_METHOD'];
 
 // method from Router.php router(){} - Route the request
