@@ -9,8 +9,8 @@
 
 require '../helpers.php';
 // the 2 require using the basePath() func from the helpers
-require '../Database.php';
-require basePath('router.php'); 
+require '../Framework/Database.php';
+require basePath('Framework/router.php'); 
 
 // Instantiating the router
 $router = new Router();
