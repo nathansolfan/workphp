@@ -2,6 +2,9 @@
 
 namespace Framework;
 
+use App\Controllers\ErrorController;
+use Error;
+
 // // need to import $routes and set it to the $routes variable
 // $routes = require basePath('routes.php');
 
@@ -13,7 +16,6 @@ namespace Framework;
 //     http_response_code(404);
 //     require(basePath($routes['404']));
 // }
-
 
 
 class Router {
@@ -85,17 +87,11 @@ class Router {
         $this->registerRoute('DELETE', $uri, $controller);
     }
 
-    /**
-     * Load error page
-     * 
-     * @param int $httpCode
-     * @return void
-     */
-    public function error($httpCode = 404){
-        http_response_code($httpCode);
-        loadView("error/{$httpCode}");
-        exit;
-    }
+    // public function error($httpCode = 404){
+    //     http_response_code($httpCode);
+    //     loadView("error/{$httpCode}");
+    //     exit;
+    // }
 
     /**
      * Route the request
@@ -128,7 +124,7 @@ class Router {
                 return;            
             }            
         }
-        // from above in case 
-        $this->error();            
+        // :: static
+        ErrorController::notFound();           
     }
 }
