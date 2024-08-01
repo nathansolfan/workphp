@@ -105,6 +105,7 @@ class Router {
     //  if matches the route then loads the correct controller
     // on routes.php check $router->get('/', 'controllers/home.php') or others
    
+    // custom autoloader
     public function route($uri, $method){
         foreach ($this->routes as $route) {
             if ($route['uri'] === $uri && $route['method'] === $method) {

@@ -9,11 +9,20 @@
 
 require '../helpers.php';
 // the 2 require using the basePath() func from the helpers
-require '../Framework/Database.php';
-require basePath('Framework/router.php'); 
+// require '../Framework/Database.php';
+// require basePath('Framework/router.php'); 
+// bottom does the same as this above
+
+spl_autoload_register(function ($class) {
+    $path = basePath('Framework/' . $class . '.php');
+    if (file_exists($path)) {
+        require $path;
+    }
+});
 
 // Instantiating the router
 $router = new Router();
+
 // $routes = require basePath('routes.php'); - Get routes
 $routes = require '../routes.php';
 
