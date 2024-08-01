@@ -34,10 +34,10 @@ $routes = require '../routes.php';
 // for the http://localhost:8000/listings/2 - pass parse_url
 // like this dont include the ID on the main URI, inspect($uri) shows that 
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-$method = $_SERVER['REQUEST_METHOD'];
+
 
 // method from Router.php router(){} - Route the request
-$router->route($uri, $method);
+$router->route($uri);
 
 
 

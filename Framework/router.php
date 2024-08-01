@@ -108,21 +108,31 @@ class Router {
     // on routes.php check $router->get('/', 'controllers/home.php') or others
    
     // custom autoloader
-    public function route($uri, $method){
+    public function route($uri){
+
+        $requestMethod = $_SERVER['REQUEST_METHOD'];
         foreach ($this->routes as $route) {
-            if ($route['uri'] === $uri && $route['method'] === $method) {
-                // require basePath('App/' . $route['controller']);
-                // Extract Controller and ControllerMethod from routes from RegisterROute
-                $controller = 'App\\Controllers\\' . $route['controller'];
-                $controllerMethod = $route['controllerMethod'];
 
-                // Instantiate controller, call the method
-                $controllerInstance = new $controller();
-                $controllerInstance->$controllerMethod();
+            // Split current URI into segments
+            $uriSegments = explode('/', trim($uri, '/'));
+
+            // Split route URI into segments - use inspect($uri or route Segments)
+            $routeSegments = explode('/', trim($route['uri'], '/'));
 
 
-                return;            
-            }            
+
+            // if ($route['uri'] === $uri && $route['method'] === $method) {
+            //     // require basePath('App/' . $route['controller']);
+            //     // Extract Controller and ControllerMethod from routes from RegisterROute
+            //     $controller = 'App\\Controllers\\' . $route['controller'];
+            //     $controllerMethod = $route['controllerMethod'];
+
+            //     // Instantiate controller, call the method
+            //     $controllerInstance = new $controller();
+            //     $controllerInstance->$controllerMethod();
+
+            //     return;            
+            // }            
         }
         // :: static
         ErrorController::notFound();           
