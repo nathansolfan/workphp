@@ -35,15 +35,20 @@ class Database {
      * Query the database
      * 
      * @param string $query
-     * 
+     * add params to modify the query
      * @return PDOStatement
      * @throws PDOExcepetion 
-     */
-
-     public function query($query) {
+     */ 
+     public function query($query, $params = []) {
         try {
             // $conn from property and then new PDO instance up on try/catch
             $stmt = $this->conn->prepare($query);
+
+            // Bind named params before execute with bindValue() method
+            foreach ($params as $param => $value) {
+                $stmt->bindValue(':' . $param, $value);
+            }
+
             $stmt->execute();
             return $stmt;
         } catch (PDOException $e) {
