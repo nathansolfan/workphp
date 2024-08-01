@@ -13,6 +13,9 @@ $params = [
 
 // Query, its modified on Database.php to take $params.
 $listing = $db->query('SELECT * FROM listings WHERE id = :id', $params)->fetch();
-inspect($listing);
+// inspect($listing);
 
-loadView('listings/show');
+// loadView has been changed to accept array []
+loadView('listings/show', [
+    'listing' => $listing
+]);
