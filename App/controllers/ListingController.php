@@ -24,4 +24,10 @@ class ListingController
             'users' => $users,
         ]);
     }
+
+
+    public function create()
+    {
+        loadView('listings/create');
+    }
 }
