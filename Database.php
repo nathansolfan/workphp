@@ -17,15 +17,15 @@ class Database {
         // DSN (Data Source Name) for the PDO connection
         $dsn = "mysql:host={$config['host']};port={$config['port']};dbname={$config['dbname']}";
 
-        // Options for PDO
+        // Options for PDO - PDO::FETCH_ASSOC
         $options = [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // Enable exceptions for errors
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ
         ];
 
         try {
             $this->conn = new PDO($dsn, $config['username'], $config['password'], $options);
-            echo "Connection successful!";
+            // echo "Connection successful!";
         } catch (PDOException $e) {
             throw new Exception("Database connection failed: {$e->getMessage()}");
         }

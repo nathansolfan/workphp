@@ -26,3 +26,10 @@ $router->route($uri, $method);
 
 
 
+// steps:
+// $uri and $method and pass into the route()
+// routes.php file maps to controller and loads it as GET request
+// Home controller, there $config and $db to grab the database
+// loadview( 'home' ,[
+// add the variable created from DB])
+// and in the views its acccessible 
