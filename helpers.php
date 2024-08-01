@@ -78,3 +78,18 @@
       echo '<pre>';
    }
 
+   /**
+    * Format salary
+    *
+    * @param string $salary
+    * @return string Formatted Salary
+    */
+
+    function formatSalary($salary) {
+      // Remove any non-numeric characters except for dot and minus
+      $numericSalary = preg_replace('/[^0-9.-]/', '', $salary);
+  
+      // Convert to float and format
+      return '$' . number_format(floatval($numericSalary), 2);
+  }
+
