@@ -119,6 +119,24 @@ class Router {
             // Split route URI into segments - use inspect($uri or route Segments)
             $routeSegments = explode('/', trim($route['uri'], '/'));
 
+            $match = true;
+
+            // check if segments match
+            if (count($uriSegments) === count($routeSegments) && strtoupper($route['method'] === $requestMethod)) {
+                $params = [];
+
+                $match = true;
+
+                for ($i=0; $i < count($uriSegments); $i++) { 
+                    // if URI`s do not match and no  param - value in between {}
+                    if ($routeSegments[$i] !== $uriSegments[$i] && !preg_match('/\{(.+?\}/', $routeSegments[$i])) {
+                        $match = false;
+                        break;
+                    }
+                }
+            }
+
+
 
 
             // if ($route['uri'] === $uri && $route['method'] === $method) {
